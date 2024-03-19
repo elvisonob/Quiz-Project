@@ -11,11 +11,13 @@ const Questions = () => {
       <div className={classes.Questions}>
         <h3>{QUESTIONS[activeQuestionIndex].text}</h3>
       </div>
-      <div className={classes.Answers}>
-        <li className={classes.AnswersList}>
-          {QUESTIONS[activeQuestionIndex].answers}
-        </li>
-      </div>
+      <ul className={classes.Answers}>
+        {QUESTIONS[activeQuestionIndex].answers.map((answer) => (
+          <li key={answer} className={classes.AnswersList}>
+            <button>{answer}</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
