@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
+import QuestionTimer from './QuestionTimer.js';
 
 const Questions = () => {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -16,6 +17,7 @@ const Questions = () => {
 
   const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
   shuffledAnswers.sort(() => Math.random() - 0.5);
+
   const onHandleAnswerClick = (answer) => {
     setUserAnswers((prevAnswers) => {
       return [...prevAnswers, answer];
@@ -25,6 +27,12 @@ const Questions = () => {
   return (
     <div className={classes.Quiz}>
       <div className={classes.Questions}>
+        <QuestionTimer
+          timeout={10000}
+          onTimeout={() => {
+            onHandleAnswerClick(null);
+          }}
+        />
         <h3>{QUESTIONS[activeQuestionIndex].text}</h3>
       </div>
       <ul className={classes.Answers}>
