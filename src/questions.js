@@ -11,7 +11,7 @@ const QUESTIONS = [
   },
   {
     id: 'q3',
-    text: 'Who is shortest serving Prime Minister in UK history?',
+    text: 'Who is the shortest serving Prime Minister in UK history?',
     answers: ['Liz Truss', 'Rishi Sunak', 'Boris Johnson', 'Theresa May'],
   },
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
@@ -11,6 +11,16 @@ const Questions = () => {
 
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
+  const onHandleAnswerClick = useCallback(function onHandleAnswerClick(answer) {
+    setUserAnswers((prevAnswers) => {
+      return [...prevAnswers, answer];
+    });
+  }, []);
+
+  const handleSkipAnswer = useCallback(() => {
+    onHandleAnswerClick(null);
+  }, [onHandleAnswerClick]);
+
   if (quizIsComplete) {
     return <SummaryPage />;
   }
@@ -18,20 +28,13 @@ const Questions = () => {
   const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
   shuffledAnswers.sort(() => Math.random() - 0.5);
 
-  const onHandleAnswerClick = (answer) => {
-    setUserAnswers((prevAnswers) => {
-      return [...prevAnswers, answer];
-    });
-  };
-
   return (
     <div className={classes.Quiz}>
       <div className={classes.Questions}>
         <QuestionTimer
+          // key={activeQuestionIndex}
           timeout={10000}
-          onTimeout={() => {
-            onHandleAnswerClick(null);
-          }}
+          onTimeout={handleSkipAnswer}
         />
         <h3>{QUESTIONS[activeQuestionIndex].text}</h3>
       </div>
