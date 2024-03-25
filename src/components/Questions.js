@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
@@ -32,7 +32,7 @@ const Questions = () => {
     <div className={classes.Quiz}>
       <div className={classes.Questions}>
         <QuestionTimer
-          // key={activeQuestionIndex}
+          key={activeQuestionIndex}
           timeout={10000}
           onTimeout={handleSkipAnswer}
         />
