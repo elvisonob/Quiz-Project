@@ -5,6 +5,7 @@ import SummaryPage from './SummaryPage';
 import QuestionTimer from './QuestionTimer.js';
 
 const Questions = () => {
+  const [pickedAnswer, setPickedAnswer] = useState('');
   const [userAnswers, setUserAnswers] = useState([]);
 
   const activeQuestionIndex = userAnswers.length;
@@ -12,6 +13,15 @@ const Questions = () => {
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   const onHandleAnswerClick = useCallback(function onHandleAnswerClick(answer) {
+    if (answer !== null) {
+      setPickedAnswer('highligted');
+    }
+
+    if (answer === QUESTIONS[activeQuestionIndex].answers[0]) {
+      setPickedAnswer('green');
+    } else {
+      setPickedAnswer('red');
+    }
     setUserAnswers((prevAnswers) => {
       return [...prevAnswers, answer];
     });

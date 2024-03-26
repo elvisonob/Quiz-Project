@@ -18,6 +18,7 @@ const QuestionTimer = ({ onTimeout, timeout }) => {
       setRemainingTime((prevRemainingTime) => prevRemainingTime - 100);
     }, 100);
     return () => {
+      console.log('cleanup Interval');
       clearInterval(timeInterval);
     };
   }, []);
