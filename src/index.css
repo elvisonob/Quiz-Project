@@ -7,3 +7,7 @@
 .QuizCompletedLogo {
     text-align: center;
 }
+
+.pickedAnswer {
+    color: 'green';
+}

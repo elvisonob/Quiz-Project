@@ -8,24 +8,33 @@ const Questions = () => {
   const [pickedAnswer, setPickedAnswer] = useState('');
   const [userAnswers, setUserAnswers] = useState([]);
 
-  const activeQuestionIndex = userAnswers.length;
+  const activeQuestionIndex =
+    pickedAnswer === '' ? userAnswers.length : userAnswers.length - 1;
 
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-  const onHandleAnswerClick = useCallback(function onHandleAnswerClick(answer) {
-    if (answer !== null) {
-      setPickedAnswer('highligted');
-    }
+  const onHandleAnswerClick = useCallback(
+    function onHandleAnswerClick(answer) {
+      setPickedAnswer('answer');
 
-    if (answer === QUESTIONS[activeQuestionIndex].answers[0]) {
-      setPickedAnswer('green');
-    } else {
-      setPickedAnswer('red');
-    }
-    setUserAnswers((prevAnswers) => {
-      return [...prevAnswers, answer];
-    });
-  }, []);
+      setUserAnswers((prevAnswers) => {
+        return [...prevAnswers, answer];
+      });
+
+      setTimeout(() => {
+        if (answer === QUESTIONS[activeQuestionIndex].answers[0]) {
+          setPickedAnswer('correct');
+        } else {
+          setPickedAnswer('wrong');
+        }
+
+        setTimeout(() => {
+          setPickedAnswer('');
+        }, 2000);
+      }, 1000);
+    },
+    [activeQuestionIndex]
+  );
 
   const handleSkipAnswer = useCallback(() => {
     onHandleAnswerClick(null);
@@ -51,7 +60,10 @@ const Questions = () => {
       <ul className={classes.Answers}>
         {shuffledAnswers.map((answer) => (
           <li key={answer} className={classes.AnswersList}>
-            <button onClick={() => onHandleAnswerClick(answer)}>
+            <button
+              onClick={() => onHandleAnswerClick(answer)}
+              className={classes.pickedAnswer}
+            >
               {answer}
             </button>
           </li>
