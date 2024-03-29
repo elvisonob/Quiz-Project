@@ -32,3 +32,18 @@
     color: black;
     font-weight: bolder;
 }
+
+.AnswersList button.selected {
+    background: orange;
+    color: #2c203d;
+}
+
+.AnswersList button.correct {
+    background: green;
+    color: #2c203d;
+}
+
+.AnswersList button.wrong {
+    background: red;
+    color: #2c203d;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import QUESTIONS from './../questions';
-import classes from './Questions.module.css';
+import './Questions.css';
 import SummaryPage from './SummaryPage';
 import QuestionTimer from './QuestionTimer.js';
 
@@ -48,8 +48,8 @@ const Questions = () => {
   shuffledAnswers.sort(() => Math.random() - 0.5);
 
   return (
-    <div className={classes.Quiz}>
-      <div className={classes.Questions}>
+    <div className="Quiz">
+      <div className="Questions">
         <QuestionTimer
           key={activeQuestionIndex}
           timeout={10000}
@@ -57,17 +57,33 @@ const Questions = () => {
         />
         <h3>{QUESTIONS[activeQuestionIndex].text}</h3>
       </div>
-      <ul className={classes.Answers}>
-        {shuffledAnswers.map((answer) => (
-          <li key={answer} className={classes.AnswersList}>
-            <button
-              onClick={() => onHandleAnswerClick(answer)}
-              className={classes.pickedAnswer}
-            >
-              {answer}
-            </button>
-          </li>
-        ))}
+      <ul className="Answers">
+        {shuffledAnswers.map((answer) => {
+          const isSelected = userAnswers[userAnswers.length - 1] === answer;
+          let cssClass = '';
+
+          if (pickedAnswer === 'answer' && isSelected) {
+            cssClass = 'selected';
+          }
+
+          if (
+            (pickedAnswer === 'correct' || pickedAnswer === 'wrong') &&
+            isSelected
+          ) {
+            cssClass = pickedAnswer;
+          }
+
+          return (
+            <li key={answer} className="AnswersList">
+              <button
+                onClick={() => onHandleAnswerClick(answer)}
+                className={cssClass}
+              >
+                {answer}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
