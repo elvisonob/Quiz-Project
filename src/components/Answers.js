@@ -2,15 +2,20 @@ import { useRef } from 'react';
 import classes from './Questions.module.css';
 
 export default function Answer({
-  shuffledAnswers,
-  userAnswers,
+  answers,
+  selectedAnswer,
   pickedAnswer,
   onHandleAnswerClick,
 }) {
+  const shuffledAnswers = useRef();
+  if (!shuffledAnswers.current) {
+    shuffledAnswers.current = [...answers];
+    shuffledAnswers.current.sort(() => Math.random() - 0.5);
+  }
   return (
     <ul className={classes.Answers}>
       {shuffledAnswers.current.map((answer) => {
-        const isSelected = userAnswers[userAnswers.length - 1] === answer;
+        const isSelected = selectedAnswer === answer;
         let cssClass = '';
 
         if (pickedAnswer === 'answer' && isSelected) {

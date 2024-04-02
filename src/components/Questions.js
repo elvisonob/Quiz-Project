@@ -1,15 +1,14 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
 import Answer from './Answers';
+import Question from './Quiz.js';
 import QuestionTimer from './QuestionTimer.js';
 
 const Questions = () => {
   const [pickedAnswer, setPickedAnswer] = useState('');
   const [userAnswers, setUserAnswers] = useState([]);
-
-  const shuffledAnswers = useRef();
 
   const activeQuestionIndex =
     pickedAnswer === '' ? userAnswers.length : userAnswers.length - 1;
@@ -46,27 +45,9 @@ const Questions = () => {
     return <SummaryPage />;
   }
 
-  if (!shuffledAnswers.current) {
-    shuffledAnswers.current = [...QUESTIONS[activeQuestionIndex].answers];
-    shuffledAnswers.current.sort(() => Math.random() - 0.5);
-  }
-
   return (
     <div className={classes.Quiz}>
-      <div className={classes.Questions}>
-        <QuestionTimer
-          key={activeQuestionIndex}
-          timeout={10000}
-          onTimeout={handleSkipAnswer}
-        />
-        <h3>{QUESTIONS[activeQuestionIndex].text}</h3>
-      </div>
-      <Answer
-        shuffledAnswers={shuffledAnswers}
-        userAnswers={userAnswers}
-        pickedAnswer={pickedAnswer}
-        onHandleAnswerClick={onHandleAnswerClick}
-      />
+      <Question handleSkipAnswer={handleSkipAnswer} />
     </div>
   );
 };
