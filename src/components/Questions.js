@@ -2,9 +2,7 @@ import React, { useState, useCallback } from 'react';
 import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
-import Answer from './Answers';
 import Question from './Quiz.js';
-import QuestionTimer from './QuestionTimer.js';
 
 const Questions = () => {
   const [pickedAnswer, setPickedAnswer] = useState('');
@@ -47,7 +45,13 @@ const Questions = () => {
 
   return (
     <div className={classes.Quiz}>
-      <Question handleSkipAnswer={handleSkipAnswer} />
+      <Question
+        key={activeQuestionIndex}
+        questionText={QUESTIONS[activeQuestionIndex].text}
+        onSkipAnswer={handleSkipAnswer}
+        pickedAnswer={pickedAnswer}
+        onHandleAnswerClick={onHandleAnswerClick}
+      />
     </div>
   );
 };
