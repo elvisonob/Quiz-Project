@@ -8,6 +8,8 @@ export default function Question({
   onSkipAnswer,
   onHandleAnswerClick,
   pickedAnswer,
+  selectedAnswer,
+  answers,
 }) {
   return (
     <div className={classes.Question}>
@@ -16,8 +18,8 @@ export default function Question({
         <h3>{questionText}</h3>
       </div>
       <Answer
-        selectedAnswer={userAnswers[userAnswers.length - 1]}
-        answers={QUESTIONS[activeQuestionIndex].answers}
+        selectedAnswer={selectedAnswer}
+        answers={answers}
         pickedAnswer={pickedAnswer}
         onHandleAnswerClick={onHandleAnswerClick}
       />

@@ -48,9 +48,11 @@ const Questions = () => {
       <Question
         key={activeQuestionIndex}
         questionText={QUESTIONS[activeQuestionIndex].text}
-        onSkipAnswer={handleSkipAnswer}
         pickedAnswer={pickedAnswer}
+        selectedAnswer={userAnswers[userAnswers.length - 1]}
         onHandleAnswerClick={onHandleAnswerClick}
+        onSkipAnswer={handleSkipAnswer}
+        answers={QUESTIONS[activeQuestionIndex].answers}
       />
     </div>
   );
