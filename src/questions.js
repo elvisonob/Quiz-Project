@@ -22,7 +22,7 @@ const QUESTIONS = [
   },
   {
     id: 'q5',
-    text: 'Which is th second most populous city in the UK?',
+    text: 'Which is the second most populous city in the UK?',
     answers: ['Birmingham', 'Manchester', 'Leeds', 'Liverpool'],
   },
 ];

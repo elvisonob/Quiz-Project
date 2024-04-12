@@ -1,16 +1,44 @@
+import React, { useState } from 'react';
 import classes from './Questions.module.css';
 import QUESTIONS from '../questions';
 import QuestionTimer from './QuestionTimer.js';
 import Answer from './Answers.js';
 
 export default function Question({
+  key,
   questionText,
   onSkipAnswer,
-  onHandleAnswerClick,
-  pickedAnswer,
+
   selectedAnswer,
   answers,
 }) {
+  const [answer, setAnswer] = useState({ selectedAnswer: '', isCorrect: null });
+
+  const onHandleSelect = (answer) => {
+    setAnswer({ selectedAnswer: answer, isCorrect: null });
+
+    setTimeout(() => {
+      setAnswer({
+        selectedAnswer: answer,
+        isCorrect: QUESTIONS[key].answers[0] === answer,
+      });
+
+      // setTimeout(() => {
+      //   setAnswer({ selectedAnswer: '' });
+      // }, 2000);
+    }, 1000);
+  };
+
+  let pickedAnswer = '';
+
+  if (answer.selectedAnswer) {
+    pickedAnswer = 'selected';
+  } else if (answer.isCorrect) {
+    pickedAnswer = 'correct';
+  } else {
+    pickedAnswer = 'wrong';
+  }
+
   return (
     <div className={classes.Question}>
       <div className={classes.Questions}>
@@ -21,7 +49,7 @@ export default function Question({
         selectedAnswer={selectedAnswer}
         answers={answers}
         pickedAnswer={pickedAnswer}
-        onHandleAnswerClick={onHandleAnswerClick}
+        onHandleAnswerClick={onHandleSelect}
       />
     </div>
   );
