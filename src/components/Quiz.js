@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import classes from './Questions.module.css';
-import QUESTIONS from '../questions';
+import QUESTIONS from './../questions';
 import QuestionTimer from './QuestionTimer.js';
 import Answer from './Answers.js';
 
-export default function Question({
-  key,
-  questionText,
-  onSkipAnswer,
-
-  selectedAnswer,
-  answers,
-}) {
+export default function Question({ index, onSkipAnswer, onSelectClick }) {
   const [answer, setAnswer] = useState({ selectedAnswer: '', isCorrect: null });
 
   const onHandleSelect = (answer) => {
@@ -20,34 +13,32 @@ export default function Question({
     setTimeout(() => {
       setAnswer({
         selectedAnswer: answer,
-        isCorrect: QUESTIONS[key].answers[0] === answer,
+        isCorrect: QUESTIONS[index].answers[0] === answer,
       });
 
-      // setTimeout(() => {
-      //   setAnswer({ selectedAnswer: '' });
-      // }, 2000);
+      setTimeout(() => {
+        onSelectClick(answer);
+      }, 2000);
     }, 1000);
   };
 
   let pickedAnswer = '';
 
-  if (answer.selectedAnswer) {
-    pickedAnswer = 'selected';
-  } else if (answer.isCorrect) {
-    pickedAnswer = 'correct';
-  } else {
-    pickedAnswer = 'wrong';
+  if (answer.selectedAnswer && answer.isCorrect !== null) {
+    pickedAnswer = answer.isCorrect ? 'correct' : 'wrong';
+  } else if (answer.isCorrect === null) {
+    pickedAnswer = 'answer';
   }
 
   return (
     <div className={classes.Question}>
       <div className={classes.Questions}>
         <QuestionTimer timeout={10000} onTimeout={onSkipAnswer} />
-        <h3>{questionText}</h3>
+        <h3>{QUESTIONS[index].text}</h3>
       </div>
       <Answer
-        selectedAnswer={selectedAnswer}
-        answers={answers}
+        answers={QUESTIONS[index].answers}
+        selectedAnswer={answer.selectedAnswer}
         pickedAnswer={pickedAnswer}
         onHandleAnswerClick={onHandleSelect}
       />
