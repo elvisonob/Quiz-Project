@@ -33,6 +33,14 @@
     font-weight: bolder;
 }
 
+.AnswersList button:hover,
+.AnswersList button:focus {
+    /* background: linear-gradient(180deg, #bf48f6 0%, #9b50f2 100%); */
+    background: #9d5af5;
+    color: white;
+    /* box-shadow: 0 0 4px 2px rgba(255, 200, 60, 0.8); */
+}
+
 .AnswersList button.selected {
     background: orange;
     color: #2c203d;
@@ -47,3 +55,8 @@
     background: red;
     color: #2c203d;
 }
+
+
+/* .AnswersList button:disabled {
+    background: grey;
+} */

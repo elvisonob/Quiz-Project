@@ -34,6 +34,7 @@ export default function Answer({
             <button
               onClick={() => onHandleAnswerClick(answer)}
               className={classes[cssClass]}
+              disabled={pickedAnswer !== ''}
             >
               {answer}
             </button>

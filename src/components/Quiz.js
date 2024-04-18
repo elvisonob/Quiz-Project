@@ -26,7 +26,7 @@ export default function Question({ index, onSkipAnswer, onSelectClick }) {
 
   if (answer.selectedAnswer && answer.isCorrect !== null) {
     pickedAnswer = answer.isCorrect ? 'correct' : 'wrong';
-  } else if (answer.isCorrect === null) {
+  } else if (answer.selectedAnswer) {
     pickedAnswer = 'answer';
   }
 
