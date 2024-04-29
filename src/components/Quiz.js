@@ -43,7 +43,12 @@ export default function Question({ index, onSkipAnswer, onSelectClick }) {
   return (
     <div className={classes.Question}>
       <div className={classes.Questions}>
-        <QuestionTimer timeout={timer} onTimeout={onSkipAnswer} key={timer} />
+        <QuestionTimer
+          key={timer}
+          timeout={timer}
+          onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : null}
+          mode={pickedAnswer}
+        />
         <h3>{QUESTIONS[index].text}</h3>
       </div>
       <Answer
