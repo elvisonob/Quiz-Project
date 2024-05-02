@@ -22,7 +22,12 @@ const Questions = () => {
   }, [onHandleAnswerClick]);
 
   if (quizIsComplete) {
-    return <SummaryPage AnswersArray={userAnswers} />;
+    return (
+      <SummaryPage
+        activeIndex={activeQuestionIndex}
+        AnswersArray={userAnswers}
+      />
+    );
   }
 
   return (
