@@ -4,7 +4,6 @@ import QUESTIONS from './../questions';
 import React from 'react';
 
 const SummaryPage = ({ AnswersArray, activeIndex }) => {
-  //Now, check if the answers in the userAnswer array are correct answers
   console.log(AnswersArray);
 
   const correctAnswers = AnswersArray.map(
@@ -13,37 +12,22 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
 
   console.log(correctAnswers);
 
-  //take out the correct Answers
-
   const arrayOfBoolean = correctAnswers.reduce((acc, curr, i, arr) => {
     return acc + curr;
   }, 0);
 
   const finalPercentageCorrect = (arrayOfBoolean / AnswersArray.length) * 100;
 
-  // When it is a right answer, it is true
+  const skippedAnswer = AnswersArray.map((answers, index) => answers === null);
 
-  // When the answer is wrong it is false
+  const arrayOfSkippedAnswers = skippedAnswer.reduce((acc, curr, i, arr) => {
+    return acc + curr;
+  }, 0);
 
-  // When the answer is null, it should be null
+  const finalSkippedAnswer =
+    (arrayOfSkippedAnswers / AnswersArray.length) * 100;
 
-  // False and Null should not mean same thing
-
-  // const skippedAnswers = AnswersArray.map((answers, index) => answers === null);
-
-  // const arrayofSkippedAnswers = skippedAnswers.reduce((acc, curr, i, arr) => {
-  //   return acc + curr;
-  // }, 0);
-
-  // const finalPercentageSkipped =
-  //   (arrayofSkippedAnswers / AnswersArray.length) * 100;
-
-  // const arrayofFalseAnswers = falseAnswers.reduce((acc, curr, i, arr) => {
-  //   return acc + curr;
-  // }, 0);
-
-  // const finalPercentageWrong =
-  //   (arrayofFalseAnswers / AnswersArray.length) * 100;
+  const wrongAnswer = 100 - (finalPercentageCorrect + finalSkippedAnswer);
 
   return (
     <div>
@@ -57,20 +41,23 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
           </div>
 
           <div className={classes.WrongAnswer}>
-            <div>{}%</div>
+            <div>{wrongAnswer}%</div>
             <span>Wrong Answer</span>
           </div>
           <div className={classes.SkippedAnswer}>
-            <div>{}%</div>
+            <div>{finalSkippedAnswer}%</div>
             <span>Skipped Answer</span>
           </div>
         </div>
-
-        <div>
-          <div>Number</div>
-          <div>Question</div>
-          <div>Answer</div>
-        </div>
+        {/* display a list of the questions and their numbers, and the answers given */}
+        {QUESTIONS.map((answerGroup, index) => (
+          <div key={index}>
+            <div>{index + 1}</div>
+            <div>{answerGroup[index]}</div>
+            <div>{answerGroup.text}</div>
+            <div>{AnswersArray[index]}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
