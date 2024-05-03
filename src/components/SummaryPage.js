@@ -29,6 +29,19 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
 
   const wrongAnswer = 100 - (finalPercentageCorrect + finalSkippedAnswer);
 
+  // for the CSS styling,
+  // the correct answer should be in green
+  // the wrong answer in red
+
+  let css;
+  if (correctAnswers) {
+    css = 'green';
+  } else if (skippedAnswer) {
+    css = 'pink';
+  } else {
+    css = 'red';
+  }
+
   return (
     <div>
       <div className="QuizCompletedLogo">
@@ -50,12 +63,15 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
           </div>
         </div>
         {/* display a list of the questions and their numbers, and the answers given */}
+        {/* If no answer was given, it should display skip */}
         {QUESTIONS.map((answerGroup, index) => (
-          <div key={index}>
-            <div>{index + 1}</div>
-            <div>{answerGroup[index]}</div>
-            <div>{answerGroup.text}</div>
-            <div>{AnswersArray[index]}</div>
+          <div key={index} className={classes.wholeQuestion}>
+            <div className={classes.indexNumber}>{index + 1}</div>
+            <div className={classes.text}>{answerGroup.text}</div>
+
+            <div className={classes.css}>
+              {AnswersArray[index] ?? 'Skipped'}
+            </div>
           </div>
         ))}
       </div>

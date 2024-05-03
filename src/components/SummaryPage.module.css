@@ -10,3 +10,32 @@
     font-weight: bold;
     font-size: large;
 }
+
+.indexNumber {
+    color: orange;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.text {
+    font-weight: bold;
+}
+
+.wholeQuestion {
+    /* border: 1px solid black; */
+    margin-bottom: 10px;
+    /* display: inline; */
+}
+
+.css {
+    color: green;
+}
+
+.css {
+    color: red;
+}
+
+
+/* .css {
+    color: pink;
+} */
