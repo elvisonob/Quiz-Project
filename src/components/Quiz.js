@@ -41,7 +41,7 @@ export default function Question({ index, onSkipAnswer, onSelectClick }) {
   }
 
   return (
-    <div className={classes.Question}>
+    <div className="Question">
       <div className={classes.Questions}>
         <QuestionTimer
           key={timer}

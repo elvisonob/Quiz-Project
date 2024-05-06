@@ -19,3 +19,9 @@ h3 {
     margin-top: 20px;
     font-size: x-large;
 }
+
+@media screen and (max-width: 787px) {
+    .Question {
+        margin-top: 50px;
+    }
+}

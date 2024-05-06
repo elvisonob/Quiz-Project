@@ -64,7 +64,7 @@ span {
     padding-bottom: 5px;
 }
 
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 551px) {
     .AnswerPercent {
         display: grid;
         grid-template-columns: 100px 100px 100px;
@@ -73,7 +73,7 @@ span {
         margin-bottom: 40px;
     }
     .specificQuestion {
-        display: inline-block;
+        /* display: inline-block; */
         padding-left: 100px;
         padding-right: 100px;
         padding-top: 5px;
