@@ -53,3 +53,16 @@
     background: red;
     color: #2c203d;
 }
+
+
+/* when there is no cursor or when it is in mobile view, ignore the purple hover */
+
+@media screen and (max-width: 750px) {
+    .AnswersList button:hover,
+    .AnswersList button:focus {
+        /* background: linear-gradient(180deg, #bf48f6 0%, #9b50f2 100%); */
+        /* background: #9d5af5; */
+        color: white;
+        /* box-shadow: 0 0 4px 2px rgba(255, 200, 60, 0.8); */
+    }
+}
