@@ -58,8 +58,7 @@
 /* when there is no cursor or when it is in mobile view, ignore the purple hover */
 
 @media screen and (max-width: 750px) {
-    .AnswersList button:hover,
-    .AnswersList button:focus {
+    .AnswersList button:hover {
         /* background: linear-gradient(180deg, #bf48f6 0%, #9b50f2 100%); */
         /* background: #9d5af5; */
         color: white;
