@@ -5,9 +5,17 @@
 }
 
 .QuizCompletedLogo {
+    margin-top: 50px;
     text-align: center;
 }
 
 .pickedAnswer {
     color: 'green';
+}
+
+.QuestionMarker,
+h3 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: x-large;
 }

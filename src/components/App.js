@@ -5,7 +5,6 @@ import Questions from './Questions';
 const App = () => {
   return (
     <div>
-      <Header />
       <Questions />
     </div>
   );

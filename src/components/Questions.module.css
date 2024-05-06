@@ -29,8 +29,7 @@
     background: #6cb7f5;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    /* color: black;
-    font-weight: bolder; */
+    font-weight: bolder;
 }
 
 .AnswersList button:hover,

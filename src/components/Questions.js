@@ -3,6 +3,7 @@ import QUESTIONS from './../questions';
 import classes from './Questions.module.css';
 import SummaryPage from './SummaryPage';
 import Question from './Quiz.js';
+import Header from './Header.js';
 
 const Questions = () => {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -32,6 +33,7 @@ const Questions = () => {
 
   return (
     <div className={classes.Quiz}>
+      <Header />
       <Question
         key={activeQuestionIndex}
         index={activeQuestionIndex}
