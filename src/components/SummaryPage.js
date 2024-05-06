@@ -29,19 +29,6 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
 
   const wrongAnswer = 100 - (finalPercentageCorrect + finalSkippedAnswer);
 
-  // for the CSS styling,
-  // the correct answer should be in green
-  // the wrong answer in red
-
-  let css;
-  if (correctAnswers) {
-    css = 'green';
-  } else if (skippedAnswer) {
-    css = 'pink';
-  } else {
-    css = 'red';
-  }
-
   return (
     <div>
       <div className="QuizCompletedLogo">
@@ -49,31 +36,45 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
         <h2>Quiz Completed and Summary</h2>
         <div className={classes.AnswerPercent}>
           <div className={classes.CorrectAnswer}>
-            <div>{finalPercentageCorrect}%</div>
-            <span>Correct Answer</span>
+            <div className={classes.Percentage}>{finalPercentageCorrect}%</div>
+            <span>Answered Correctly</span>
           </div>
 
           <div className={classes.WrongAnswer}>
-            <div>{wrongAnswer}%</div>
-            <span>Wrong Answer</span>
+            <div className={classes.Percentage}>{wrongAnswer}%</div>
+            <span>Answered Incorrectly</span>
           </div>
           <div className={classes.SkippedAnswer}>
-            <div>{finalSkippedAnswer}%</div>
+            <div className={classes.Percentage}>{finalSkippedAnswer}%</div>
             <span>Skipped Answer</span>
           </div>
         </div>
-        {/* display a list of the questions and their numbers, and the answers given */}
-        {/* If no answer was given, it should display skip */}
-        {QUESTIONS.map((answerGroup, index) => (
-          <div key={index} className={classes.wholeQuestion}>
-            <div className={classes.indexNumber}>{index + 1}</div>
-            <div className={classes.text}>{answerGroup.text}</div>
+        {QUESTIONS.map((answerGroup, index) => {
+          let cssColor;
+          if (AnswersArray[index] === QUESTIONS[index].answers[0]) {
+            cssColor = 'cssGreen';
+          } else if (
+            AnswersArray[index] !== QUESTIONS[index].answers[0] &&
+            AnswersArray[index] !== null
+          ) {
+            cssColor = 'cssRed';
+          } else {
+            cssColor = 'cssBlue';
+          }
 
-            <div className={classes.css}>
-              {AnswersArray[index] ?? 'Skipped'}
+          return (
+            <div key={index} className={classes.wholeQuestion}>
+              <div className={classes.specificQuestion}>
+                <div className={classes.indexNumber}>{index + 1}</div>
+                <div className={classes.text}>{answerGroup.text}</div>
+
+                <div className={classes[cssColor]}>
+                  <span>{AnswersArray[index] ?? 'Skipped'}</span>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

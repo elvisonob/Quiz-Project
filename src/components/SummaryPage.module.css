@@ -22,20 +22,42 @@
 }
 
 .wholeQuestion {
-    /* border: 1px solid black; */
     margin-bottom: 10px;
-    /* display: inline; */
+    border-left-width: 50%;
+    border-right-width: 20%;
 }
 
-.css {
+.cssGreen {
     color: green;
 }
 
-.css {
+.cssRed {
     color: red;
 }
 
+.cssBlue {
+    color: blue;
+}
 
-/* .css {
-    color: pink;
-} */
+span {
+    font-weight: bold;
+}
+
+.Percentage {
+    font-size: x-large;
+}
+
+.CorrectAnswer span,
+.SkippedAnswer span,
+.WrongAnswer span {
+    font-size: medium;
+}
+
+.specificQuestion {
+    border: 2px solid black;
+    display: inline-block;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
