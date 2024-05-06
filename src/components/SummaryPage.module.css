@@ -44,13 +44,15 @@ span {
 }
 
 .Percentage {
-    font-size: x-large;
+    font-size: xx-large;
+    font-weight: bold;
 }
 
 .CorrectAnswer span,
 .SkippedAnswer span,
 .WrongAnswer span {
-    font-size: medium;
+    font-weight: normal;
+    font-style: italic;
 }
 
 .specificQuestion {
