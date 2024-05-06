@@ -7,7 +7,7 @@ import Answer from './Answers.js';
 export default function Question({ index, onSkipAnswer, onSelectClick }) {
   const [answer, setAnswer] = useState({ selectedAnswer: '', isCorrect: null });
 
-  let timer = 10000;
+  let timer = 20000;
 
   if (answer.selectedAnswer) {
     timer = 1000;

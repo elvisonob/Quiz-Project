@@ -25,7 +25,7 @@ const Questions = () => {
     return (
       <SummaryPage
         activeIndex={activeQuestionIndex}
-        AnswersArray={userAnswers}
+        answersArray={userAnswers}
       />
     );
   }

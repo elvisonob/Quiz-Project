@@ -3,31 +3,23 @@ import classes from './SummaryPage.module.css';
 import QUESTIONS from './../questions';
 import React from 'react';
 
-const SummaryPage = ({ AnswersArray, activeIndex }) => {
-  console.log(AnswersArray);
-
-  const correctAnswers = AnswersArray.map(
+const SummaryPage = ({ answersArray, activeIndex }) => {
+  const correctAnswers = answersArray.filter(
     (answers, index) => answers === QUESTIONS[index].answers[0]
   );
 
-  console.log(correctAnswers);
+  const correctAnswerPercentage = Math.round(
+    (correctAnswers.length / answersArray.length) * 100
+  );
 
-  const arrayOfBoolean = correctAnswers.reduce((acc, curr, i, arr) => {
-    return acc + curr;
-  }, 0);
+  const skippedAnswers = answersArray.filter((answers) => answers === null);
 
-  const finalPercentageCorrect = (arrayOfBoolean / AnswersArray.length) * 100;
+  const skippedAnswerPercentage = Math.round(
+    (skippedAnswers.length / answersArray.length) * 100
+  );
 
-  const skippedAnswer = AnswersArray.map((answers, index) => answers === null);
-
-  const arrayOfSkippedAnswers = skippedAnswer.reduce((acc, curr, i, arr) => {
-    return acc + curr;
-  }, 0);
-
-  const finalSkippedAnswer =
-    (arrayOfSkippedAnswers / AnswersArray.length) * 100;
-
-  const wrongAnswer = 100 - (finalPercentageCorrect + finalSkippedAnswer);
+  const wrongAnswers =
+    100 - (correctAnswerPercentage + skippedAnswerPercentage);
 
   return (
     <div>
@@ -36,26 +28,26 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
         <h2>Quiz Completed and Summary</h2>
         <div className={classes.AnswerPercent}>
           <div className={classes.CorrectAnswer}>
-            <div className={classes.Percentage}>{finalPercentageCorrect}%</div>
+            <div className={classes.Percentage}>{correctAnswerPercentage}%</div>
             <span>Answered Correctly</span>
           </div>
 
           <div className={classes.WrongAnswer}>
-            <div className={classes.Percentage}>{wrongAnswer}%</div>
+            <div className={classes.Percentage}>{wrongAnswers}%</div>
             <span>Answered Incorrectly</span>
           </div>
           <div className={classes.SkippedAnswer}>
-            <div className={classes.Percentage}>{finalSkippedAnswer}%</div>
+            <div className={classes.Percentage}>{skippedAnswerPercentage}%</div>
             <span>Skipped Answer</span>
           </div>
         </div>
         {QUESTIONS.map((answerGroup, index) => {
           let cssColor;
-          if (AnswersArray[index] === QUESTIONS[index].answers[0]) {
+          if (answersArray[index] === QUESTIONS[index].answers[0]) {
             cssColor = 'cssGreen';
           } else if (
-            AnswersArray[index] !== QUESTIONS[index].answers[0] &&
-            AnswersArray[index] !== null
+            answersArray[index] !== QUESTIONS[index].answers[0] &&
+            answersArray[index] !== null
           ) {
             cssColor = 'cssRed';
           } else {
@@ -69,7 +61,7 @@ const SummaryPage = ({ AnswersArray, activeIndex }) => {
                 <div className={classes.text}>{answerGroup.text}</div>
 
                 <div className={classes[cssColor]}>
-                  <span>{AnswersArray[index] ?? 'Skipped'}</span>
+                  <span>{answersArray[index] ?? 'Skipped'}</span>
                 </div>
               </div>
             </div>

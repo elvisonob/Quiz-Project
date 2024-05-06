@@ -25,6 +25,11 @@ const QUESTIONS = [
     text: 'Which is the second most populous city in the UK?',
     answers: ['Birmingham', 'Manchester', 'Leeds', 'Liverpool'],
   },
+  {
+    id: 'q6',
+    text: 'Which state in the United States is Pernille K. Jorgensen moving to?',
+    answers: ['None of the above', 'New York', 'New Jersey', 'Washington D.C'],
+  },
 ];
 
 export default QUESTIONS;
