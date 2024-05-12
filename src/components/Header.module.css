@@ -2,3 +2,9 @@
     text-align: center;
     margin-bottom: -50px;
 }
+
+.Header h2 {
+    margin-top: 10px;
+    font-size: xx-large;
+    color: darkblue;
+}
