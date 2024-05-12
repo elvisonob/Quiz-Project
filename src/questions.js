@@ -20,15 +20,10 @@ const QUESTIONS = [
     text: 'How old was Queen Elizabeth II when she died?',
     answers: ['96', '93', '94', '95'],
   },
-  // {
-  //   id: 'q5',
-  //   text: 'Which is the second most populous city in the UK?',
-  //   answers: ['Birmingham', 'Manchester', 'Leeds', 'Liverpool'],
-  // },
   {
     id: 'q5',
-    text: 'Which state in the United States is Pernille K. Jorgensen moving to?',
-    answers: ['California', 'New York', 'New Jersey', 'Washington D.C'],
+    text: 'Which is the second most populous city in the UK?',
+    answers: ['Birmingham', 'Manchester', 'Leeds', 'Newcastle'],
   },
 ];
 
