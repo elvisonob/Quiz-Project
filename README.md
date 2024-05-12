@@ -1,5 +1,5 @@
 <h1>Project Title</h1>
-British Quiz Application
+<h3>British Quiz Application</h3>
 
 <h1>Project Description</h1>
 This interactive Quiz Application presents users with a series of five questions, each accompanied by four possible answers. <br>
