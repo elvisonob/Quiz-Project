@@ -2,7 +2,10 @@
 British Quiz Application
 
 <h1>Project Description</h1>
-This interactive Quiz Application presents users with a series of five questions, each accompanied by four possible answers. Users have 20 seconds to select the correct answer for each question before automatically moving on to the next one. <be> Upon completing all questions, users receive a comprehensive summary page detailing their performance, including their total score in percentages, correct and incorrect answers. <br>This engaging and efficient format ensures an enjoyable and informative quiz-taking experience
+This interactive Quiz Application presents users with a series of five questions, each accompanied by four possible answers. <br>
+Users have 20 seconds to select the correct answer for each question before automatically moving on to the next one. <br> 
+Upon completing all questions, users receive a comprehensive summary page detailing their performance, including their total score in percentages, correct and incorrect answers. <br>
+This engaging and efficient format ensures an enjoyable and informative quiz-taking experience
 <br>
 I used create-react-app to execute this project.
 
