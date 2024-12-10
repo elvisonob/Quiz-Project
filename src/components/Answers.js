@@ -32,10 +32,7 @@ export default function Answer({
         return (
           <li key={answer} className={classes.AnswersList}>
             <button
-              onClick={(event) => {
-                onHandleAnswerClick(answer);
-                event.target.blur();
-              }}
+              onClick={() => onHandleAnswerClick(answer)}
               className={classes[cssClass]}
               disabled={pickedAnswer !== ''}
             >
