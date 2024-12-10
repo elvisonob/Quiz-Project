@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import classes from './Questions.module.css';
 
 export default function Answer({
@@ -8,10 +8,17 @@ export default function Answer({
   onHandleAnswerClick,
 }) {
   const shuffledAnswers = useRef();
+  const buttonRefs = useRef([]);
   if (!shuffledAnswers.current) {
     shuffledAnswers.current = [...answers];
     shuffledAnswers.current.sort(() => Math.random() - 0.5);
   }
+
+  useEffect(() => {
+    buttonRefs.current.forEach((button) => {
+      if (button) button.blur(); // Remove focus from all buttons
+    });
+  }, [pickedAnswer]);
   return (
     <ul className={classes.Answers}>
       {shuffledAnswers.current.map((answer) => {
