@@ -54,6 +54,15 @@
   color: #2c203d;
 }
 
+.AnswersList button:focus {
+  outline: none;
+  /* Remove focus outline */
+  background: #6cb7f5;
+  /* Reset background */
+  box-shadow: none;
+  /* Remove focus shadow */
+}
+
 /* when there is no cursor or when it is in mobile view, ignore the purple hover */
 
 @media screen and (max-width: 750px) {
