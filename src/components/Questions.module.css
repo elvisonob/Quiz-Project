@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  /* Adjusted for better iOS compatibility */
   gap: 0.5rem;
 }
 
@@ -41,13 +40,6 @@
   background: #9d5af5;
   color: white;
   box-shadow: 0 0 4px 2px rgba(255, 200, 60, 0.8);
-}
-
-/* Explicitly reset focus styles after the button is clicked */
-
-.AnswersList button:active {
-  outline: none;
-  /* Remove focus outline when the button is clicked */
 }
 
 /* Reset focus styles for buttons not hovered or actively clicked */
@@ -92,8 +84,7 @@ html {
 /* Media query to suppress hover effects for smaller screens */
 
 @media screen and (max-width: 750px) {
-  /* This section already disables hover styling effectively */
-  /* Uncomment if additional styling tweaks are needed */
+  /* Additional suppressions for hover */
   /*
     .AnswersList button:hover,
     .AnswersList button:focus {
