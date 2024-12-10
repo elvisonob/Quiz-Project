@@ -7,7 +7,7 @@ const QUESTIONS = [
   {
     id: 'q2',
     text: 'Which city is the capital of Scotland?',
-    answers: ['Edinburgh', 'Glasgow', 'Dundee', 'Aberdeen'],
+    answers: ['Edinburgh', 'Glasgow', 'Dundee', 'Elvis'],
   },
   {
     id: 'q3',
