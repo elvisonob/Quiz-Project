@@ -75,6 +75,11 @@
   }
 }
 
+.AnswersList button:focus {
+  outline: none;
+  /* Remove default outline */
+}
+
 /* Viewport fix for iOS devices */
 
 html {
