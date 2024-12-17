@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
 .QuizCompletedLogo {
   margin-top: 50px;
   text-align: center;
